@@ -15,13 +15,12 @@ body {
 /* The grid: Four equal columns that floats next to each other */
 .column {
   float: left;
-  width: 25%;
   padding: 10px;
 }
 
 /* Style the images inside the grid */
 .column img {
-  opacity: 0.8; 
+  opacity: 0.9; 
   cursor: pointer; 
 }
 
@@ -65,35 +64,29 @@ body {
 <body>
 
 <div style="text-align:center">
-  <h2>Tabbed Image Gallery</h2>
-  <p>Click on the images below:</p>
+  <h2>My Pictures</h2>
 </div>
 
-<div class="container">
-  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-  <img id="expandedImg" style="
-    width:60%; 
-    height:60%; 
+<div class="container" style="
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;">
+  <img src="butterfly.jpg" id="expandedImg" style="
+    width: 74%;
+    float: right;
+    padding: 10px;
     margin-left: auto;
     margin-right: auto;
-    display: block;">
-  <div id="imgtext"></div>
+    display: block;
+    ">
 </div>
 
-<div class="row">
+<div class="row" style="width: 25%;">
   <div class="column">
-    <img src="butterfly.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
+    <img src="butterfly.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);" id="first">
     <img src="basin.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
     <img src="red.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
     <img src="rye.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-  </div>
-  <div class="column">
     <img src="esplanade.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
   </div>
 </div>
@@ -102,53 +95,11 @@ body {
 <script>
 function myFunction(imgs) {
   var expandImg = document.getElementById("expandedImg");
-  var imgText = document.getElementById("imgtext");
   expandImg.src = imgs.src;
-  imgText.innerHTML = imgs.alt;
   expandImg.parentElement.style.display = "block";
 }
+myFunction(document.getElementById("first"))
 </script>
 
 </body>
 </html>
-<!--
-<!DOCTYPE html>
-<html>
- 
-<head>
-    <style>
-        .image {
-            width: 50%;
-            float: left;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .picture {
-            width: 20%;
-            height: 20%;
-        }
-    </style>
-</head>
-<body>
-    <div class="image">
-        <img src="butterfly.jpg" alt="butterfly" class="picture">
-    </div>
-    <div class="image">
-        <img src="paramount.jpg" alt="paramount" class="picture">
-    </div>
-    <div class="image">
-        <img src="red.jpg" alt="red" class="picture">
-    </div>
-    <div class="image">
-        <img src="rye.jpg" alt="rye" class="picture">
-    </div>
-    <div class="image">
-        <img src="basin.jpg" alt="basin" class="picture">
-    </div>
-    <div class="image">
-        <img src="watkins.jpg" alt="watkins" class="picture">
-    </div>
-</body>
--->
