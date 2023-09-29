@@ -15,7 +15,8 @@ body {
 /* The grid: Four equal columns that floats next to each other */
 .column {
   float: left;
-  padding: 10px;
+  padding-top: 10px;
+  padding-left: 5px;
 }
 
 /* Style the images inside the grid */
@@ -27,6 +28,7 @@ body {
 .column img:hover {
   opacity: 1;
 }
+img{white-space:pre}
 
 /* Clear floats after the columns */
 .row:after {
@@ -39,15 +41,6 @@ body {
 .container {
   position: relative;
   display: none;
-}
-
-/* Expanding image text */
-#imgtext {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  color: white;
-  font-size: 20px;
 }
 
 /* Closable button inside the expanded image */
@@ -63,31 +56,32 @@ body {
 </head>
 <body>
 
-<div style="text-align:center">
-  <h2>My Pictures</h2>
-</div>
-
 <div class="container" style="
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 0;">
+    top: 0;
+    width: 75%;
+    float: right;">
   <img src="butterfly.jpg" id="expandedImg" style="
-    width: 74%;
-    float: right;
+    max-height: 95vh;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
     display: block;
     ">
+  <div style="margin-top: -20px;">
+    <p id="expandedImgText" style="text-align: center; font-family: 'Times New Roman', Times, serif;"></p>
+  </div>
 </div>
 
 <div class="row" style="width: 25%;">
   <div class="column">
-    <img src="butterfly.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);" id="first">
-    <img src="basin.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
-    <img src="red.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-    <img src="rye.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
-    <img src="esplanade.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    <img src="butterfly.jpg" alt="Camera: Pentax Program A <br> Film: Fuji Superia 400" style="width:100%" onclick="myFunction(this);" id="first">
+    <img src="basin.jpg" alt="Camera: Pentax Program A <br> Film: Kodak Gold 200" style="width:100%" onclick="myFunction(this);">
+    <img src="red.jpg" alt="Camera: Pentax Program A <br> Film: Fuji Superia 400" style="width:100%" onclick="myFunction(this);">
+    <img src="rye.jpg" alt="Camera: Pentax Program A <br> Film: Kodak Gold 200" style="width:100%" onclick="myFunction(this);">
+    <img src="esplanade.jpg" alt="Camera: Pentax Program A <br> Film: Fuji Superia 400" style="width:100%" onclick="myFunction(this);">
+    <img src="paramount.jpg" alt="Camera: Pentax Program A <br> Film: Cinestill 800T" style="width:100%" onclick="myFunction(this);">
   </div>
 </div>
 
@@ -95,7 +89,9 @@ body {
 <script>
 function myFunction(imgs) {
   var expandImg = document.getElementById("expandedImg");
+  var expandedImgText = document.getElementById("expandedImgText");
   expandImg.src = imgs.src;
+  expandedImgText.innerHTML = imgs.alt;
   expandImg.parentElement.style.display = "block";
 }
 myFunction(document.getElementById("first"))
