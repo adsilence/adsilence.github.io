@@ -33,7 +33,9 @@ width: 100%;
 float: right;
 background-color: #FFFFFF;
 z-index: 1;
+height: 100vh;
 }
+
 
 .row {
     width: 100%;
@@ -41,13 +43,27 @@ z-index: 1;
 }
 #expandedImg {
     max-width: 100vw;
-    max-height: 45vh;
+    max-height: 90vh;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: black;
+  font-size: 35px;
+  cursor: pointer;
+}
+.mobile-helper {
+    vertical-align: middle;
+    display: table-cell;
+    height: 100vh;
+    width: 100vw;
+}
 @media (min-width: 700px) { 
     .container {
     position: relative;
@@ -69,6 +85,14 @@ z-index: 1;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    }
+
+    .closebtn {
+        display: none;
+    }
+    .mobile-helper {
+        display: block;
+        width: 100%;
     }
 
 /* The grid: Four equal columns that floats next to each other */
@@ -94,9 +118,12 @@ img{white-space:pre}
 <body>
 
 <div class="container">
+    <div class="mobile-helper">
+  <span onclick="this.parentElement.parentElement.style.display='none'" class="closebtn">&times;</span>
   <img src="butterfly.jpg" id="expandedImg">
   <div style="margin-top: -20px;">
     <p id="expandedImgText" style="text-align: center; font-family: 'Times New Roman', Times, serif;"></p>
+  </div>
   </div>
 </div>
 
@@ -118,11 +145,11 @@ function myFunction(imgs) {
   var expandedImgText = document.getElementById("expandedImgText");
   expandImg.src = imgs.src;
   expandedImgText.innerHTML = imgs.alt;
-  if (document.documentElement.clientWidth > 700) {
-    expandImg.parentElement.style.display = "block";
-  }
+  expandImg.parentElement.parentElement.style.display = "block";
 }
+if(document.documentElement.clientWidth > 700) {
 myFunction(document.getElementById("first"))
+}
 </script>
 
 </body>
