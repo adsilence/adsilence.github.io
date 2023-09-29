@@ -12,23 +12,9 @@ body {
   font-family: Arial;
 }
 
-/* The grid: Four equal columns that floats next to each other */
 .column {
-  float: left;
-  padding-top: 10px;
-  padding-left: 5px;
+    padding: 5px;
 }
-
-/* Style the images inside the grid */
-.column img {
-  opacity: 0.9; 
-  cursor: pointer; 
-}
-
-.column img:hover {
-  opacity: 1;
-}
-img{white-space:pre}
 
 /* Clear floats after the columns */
 .row:after {
@@ -38,7 +24,7 @@ img{white-space:pre}
 }
 
 .container {
-position: relative;
+position: none;
 display: none;
 position: -webkit-sticky; /* Safari */
 position: sticky;
@@ -84,6 +70,24 @@ z-index: 1;
     margin-right: auto;
     display: block;
     }
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.9; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+img{white-space:pre}
 }
 </style>
 </head>
@@ -114,7 +118,9 @@ function myFunction(imgs) {
   var expandedImgText = document.getElementById("expandedImgText");
   expandImg.src = imgs.src;
   expandedImgText.innerHTML = imgs.alt;
-  expandImg.parentElement.style.display = "block";
+  if (document.documentElement.clientWidth > 700) {
+    expandImg.parentElement.style.display = "block";
+  }
 }
 myFunction(document.getElementById("first"))
 </script>
